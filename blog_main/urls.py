@@ -16,7 +16,25 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.views.static import serve
+from django.conf.urls.static import static
+from django.conf import settings
+
+import os
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+SUDOKU_WEB_APP = os.path.join(BASE_DIR, "..", 'sudoku')
+
+def sudoku_redirect(request, resource):
+    return serve(request, resource, SUDOKU_WEB_APP)
+
 urlpatterns = [
+    path("sudoku/", lambda r: sudoku_redirect(r, "index.html")),
+    path("sudoku/<path:resource>", sudoku_redirect),
+    path('blog/', include("blog.urls")),
     path('admin/', admin.site.urls),
-    path('blog/', include("blog.urls"))
+    path("", include("single_pages.urls"))
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

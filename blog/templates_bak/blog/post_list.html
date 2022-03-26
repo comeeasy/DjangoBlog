@@ -8,8 +8,8 @@
     <h1>Blog</h1>
     <hr/>
 
-    {% for p in posts %}
-        <h2>{{ p.title }}, {{ p.pk }}</h2>
+    {% for p in post_list %}
+        <h2><a href={{ p.get_absolute_path }}>{{ p.title }}</a></h2>
         <h4>{{ p.created }}</h4>
         <p>{{ p.contents }}</p>
     {% endfor %}

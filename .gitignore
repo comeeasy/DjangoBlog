@@ -131,4 +131,7 @@ dmypy.json
 # Pycharm files
 .idea/
 migrations/
+
+# .DS_Store/
+.DS_Store/
 _media/

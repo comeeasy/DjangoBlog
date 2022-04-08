@@ -1,6 +1,5 @@
 {% extends "blog/base.html" %}
 
-
 {% block title %}
     <title>Blog</title>
 {% endblock %}
@@ -20,6 +19,16 @@
             <h2 class="card-title">{{ p.title }}</h2>
             <p class="card-text">{{ p.contents | truncatewords:30 }}</p>
             <a href="{{ p.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
+            {% if p.tags.exists %}
+            <br />
+                <i class = "fas fa-tags"></i>
+                {% for tag in p.tags.iterator %}
+                    <a href = {{ tag.get_absolute_url }}> {{ tag }}</a>
+                {% endfor %}
+                <br />
+                <br />
+            {% endif %}
+
         </div>
         <div class="card-footer text-muted">
             Posted on {{ p.created_at }} by

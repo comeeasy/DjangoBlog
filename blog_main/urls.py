@@ -34,6 +34,7 @@ urlpatterns = [
     path("sudoku/<path:resource>", sudoku_redirect),
     path('blog/', include("blog.urls")),
     path('admin/', admin.site.urls),
+    path('markdownx/', include('markdownx.urls')),
     path("", include("single_pages.urls"))
 ]
 

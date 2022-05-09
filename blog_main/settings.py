@@ -26,8 +26,7 @@ SECRET_KEY = 'yo3xwl%x7s7us*%#zq%gjrk!!(=$822+ocy-ctbk=crxxl!4w9'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "0.0.0.0",
-    "127.0.0.1"
+    "*"
 ]
 
 
@@ -56,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'blog_main.urls'
@@ -127,6 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # User Media path
 
